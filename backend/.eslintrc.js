@@ -1,6 +1,3 @@
-// THIS ONLY EFFECTS THE EDITOR
-// FOR CONSOLE LOOK IN THE PACKAGE.JSON
-
 module.exports = {
     root: true,
     parser: "@typescript-eslint/parser", // Specifies the ESLint parser
