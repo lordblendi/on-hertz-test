@@ -1,0 +1,8 @@
+# don't ever lint node_modules, build, mock and dist
+node_modules/
+build/
+dist/
+__mocks__
+build
+# don't lint nyc coverage output
+coverage
