@@ -643,12 +643,19 @@
   resolved "https://registry.yarnpkg.com/@lit-labs/ssr-dom-shim/-/ssr-dom-shim-1.1.2.tgz#d693d972974a354034454ec1317eb6afd0b00312"
   integrity sha512-jnOD+/+dSrfTWYfSXBXlo5l5f0q1UuJo3tkbMDCYA2lKUYq79jaxqtGEvnRoh049nt1vdo1+45RinipU6FGY2g==
 
-"@lit/reactive-element@^2.0.0":
+"@lit/reactive-element@^1.0.0 || ^2.0.0", "@lit/reactive-element@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-2.0.0.tgz#da14a256ac5533873b935840f306d572bac4a2ab"
   integrity sha512-wn+2+uDcs62ROBmVAwssO4x5xue/uKD3MGGZOXL2sMxReTRIT0JXKyMXeu7gh0aJ4IJNEIG/3aOnUaQvM7BMzQ==
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.1.2-pre.0"
+
+"@lit/task@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@lit/task/-/task-1.0.0.tgz#61ae9ac6131368bbcf5f09ccade8037e6bb8705e"
+  integrity sha512-7jocGBh3yGlo3kKxQggZph2txK4X5GYNWp2FAsmV9u2spzUypwrzRzXe8I72icAb02B00+k2nlvxVcrQB6vyrw==
+  dependencies:
+    "@lit/reactive-element" "^1.0.0 || ^2.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
