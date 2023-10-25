@@ -1,2 +1,1 @@
-import "./components/simple-greeting"
-import "./components/other-greeting"
+import "./components/main-app"
