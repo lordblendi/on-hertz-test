@@ -45,7 +45,3 @@ app.get("/", (_req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
-// (parameter) response: http.ServerResponse<http.IncomingMessage> & {
-//     req: http.IncomingMessage;
-// }
