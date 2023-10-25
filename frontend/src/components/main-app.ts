@@ -11,7 +11,8 @@ export class MainApp extends LitElement {
             background-color: lightgray;
             display: flex;
             padding: 2rem;
-            width: 100%;
+            align-items: center;
+            justify-content: space-between;
         }
     `
 

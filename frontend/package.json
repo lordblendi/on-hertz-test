@@ -34,7 +34,9 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@lit/reactive-element": "^2.0.0",
+    "@weavedev/lit-fontawesome": "^0.3.2",
     "lit": "^3.0.0",
     "lit-element": "^4.0.0",
     "lit-html": "^3.0.0"

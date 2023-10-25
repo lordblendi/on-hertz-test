@@ -1,26 +1,24 @@
 import { css, html, LitElement, TemplateResult } from "lit"
 import { customElement } from "lit/decorators.js"
 
+import "./surround-panner-circle"
+import "./surround-panner-speakers"
+
 @customElement("surround-panner")
 export class SurroundPanner extends LitElement {
     static styles = css`
         .container {
+            position: relative;
             background-color: gray;
-        }
-
-        .circle {
-            background-color: darkgray;
-            border-radius: 50%;
-            height: 25rem;
-            width: 25rem;
-            min-height: 200px;
-            min-width: 200px;
+            height: 400px;
+            width: 400px;
         }
     `
 
     render(): TemplateResult {
         return html`<div class="container">
-            <div class="circle"></div>
+            <surround-panner-circle></surround-panner-circle>
+            <surround-panner-speakers></surround-panner-speakers>
         </div>`
     }
 }
