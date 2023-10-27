@@ -1,5 +1,5 @@
 import { css, html, LitElement, TemplateResult } from "lit"
-import { customElement, state, query } from "lit/decorators.js"
+import { customElement, query } from "lit/decorators.js"
 
 interface Size {
     width: number
@@ -15,12 +15,6 @@ export class SurroundPannerCircle extends LitElement {
 
     @query(".draggable")
     draggableElement!: HTMLDivElement
-
-    @state()
-    positionClientLeft = -1
-
-    @state()
-    positionClientTop = -1
 
     static styles = css`
         .circle {
@@ -41,19 +35,74 @@ export class SurroundPannerCircle extends LitElement {
             cursor: grab;
             z-index: 1;
         }
+
+        .isDragged {
+            opacity: 0.25;
+        }
     `
 
     getClientParameters(element: HTMLDivElement): Size {
         return {
+            // should be absolute positioned for circle placement
             clientTop: element.clientTop,
             clientLeft: element.clientLeft,
-            height: element.clientHeight,
-            width: element.clientWidth,
+            height: element.getBoundingClientRect().height,
+            width: element.getBoundingClientRect().width,
+        }
+    }
+
+    setNewPosition(left: number, top: number): void {
+        this.draggableElement.style.left = `${left}px`
+        this.draggableElement.style.top = `${top}px`
+    }
+
+    connectedCallback(): void {
+        super.connectedCallback()
+        this.addEventListener("drag", this.onDragStart)
+        this.addEventListener("dragend", this.onDragEnd)
+    }
+
+    disconnectedCallback(): void {
+        this.removeEventListener("drag", this.onDragStart)
+        this.removeEventListener("dragend", this.onDragEnd)
+        super.disconnectedCallback()
+    }
+
+    onDragStart(): void {
+        this.draggableElement.classList.add("isDragged")
+    }
+
+    onDragEnd(event: DragEvent): void {
+        this.draggableElement.classList.remove("isDragged")
+
+        const draggableParameters = this.getClientParameters(
+            this.draggableElement,
+        )
+
+        const circleClientRect = this.circleElement.getBoundingClientRect()
+
+        const x = event.clientX
+        const y = event.clientY
+
+        const radius = circleClientRect.width / 2
+        const circleCenterX = circleClientRect.left + radius
+        const circleCenterY = circleClientRect.top + radius
+
+        // is point within circle
+        // (x - centerX)² + (y - centerY)² < radius²
+        if (
+            Math.pow(x - circleCenterX, 2) + Math.pow(y - circleCenterY, 2) <=
+            Math.pow(radius, 2)
+        ) {
+            this.setNewPosition(
+                x - circleClientRect.left - draggableParameters.width / 2,
+                y - circleClientRect.top - draggableParameters.width / 2,
+            )
         }
     }
 
     render(): TemplateResult {
-        return html`<div class="circle" dropzone="move">
+        return html`<div class="circle">
             <div class="draggable" draggable="true"></div>
         </div>`
     }
@@ -65,20 +114,9 @@ export class SurroundPannerCircle extends LitElement {
         )
 
         // default place it in the middle of the circle
-        this.positionClientLeft =
-            circleParameters.width / 2 - draggableParameters.width / 2
-        this.positionClientTop =
-            circleParameters.height / 2 - draggableParameters.height / 2
-    }
-
-    updated(changedProperties: Map<string, unknown>): void {
-        // if any of the position properties have changed, we have to update it
-        if (
-            changedProperties.has("positionClientLeft") ||
-            changedProperties.has("positionClientTop")
-        ) {
-            this.draggableElement.style.left = `${this.positionClientLeft}px`
-            this.draggableElement.style.top = `${this.positionClientTop}px`
-        }
+        this.setNewPosition(
+            circleParameters.width / 2 - draggableParameters.width / 2,
+            circleParameters.height / 2 - draggableParameters.height / 2,
+        )
     }
 }
