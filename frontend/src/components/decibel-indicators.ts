@@ -51,14 +51,6 @@ export class DecibelIndicators extends LitElement {
         }
     `
 
-    private _getDataTask = new Task(this, {
-        task: async (): Promise<Decibels> => {
-            console.log("nora")
-            const response = await fetch("example.com/data/")
-            return response.json()
-        },
-    })
-
     render(): TemplateResult {
         return html`<ul>
             <li>
