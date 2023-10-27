@@ -54,6 +54,35 @@ export class SurroundPannerCircle extends LitElement {
     setNewPosition(left: number, top: number): void {
         this.draggableElement.style.left = `${left}px`
         this.draggableElement.style.top = `${top}px`
+
+        // calculate the circle center
+        const circleClientRect = this.circleElement.getBoundingClientRect()
+        const circleRadius = circleClientRect.width / 2
+        const circleCenterX = circleClientRect.left + circleRadius
+        const circleCenterY = circleClientRect.top + circleRadius
+
+        // count the center of our red dot
+        const draggableClientRect =
+            this.draggableElement.getBoundingClientRect()
+        const draggableCenterX =
+            draggableClientRect.x + draggableClientRect.width / 2
+        const draggableCenterY =
+            draggableClientRect.y + draggableClientRect.height / 2
+
+        // convert the position to coordinates
+        const x = (draggableCenterX - circleCenterX) / circleRadius
+        const y = (circleCenterY - draggableCenterY) / circleRadius
+
+        // notify the other element to request an update
+        const event = new CustomEvent("coordinateUpdate", {
+            bubbles: true,
+            composed: true,
+            detail: {
+                x,
+                y,
+            },
+        })
+        this.draggableElement.dispatchEvent(event)
     }
 
     connectedCallback(): void {
