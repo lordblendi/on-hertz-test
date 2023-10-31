@@ -18,26 +18,42 @@ export class SurroundPannerCircle extends LitElement {
 
     static styles = css`
         .circle {
-            position: absolute;
-            top: 50px;
-            left: 10%;
             background-color: darkgray;
             border-radius: 50%;
             height: 20rem;
+            left: 10%;
+            position: absolute;
+            top: 50px;
             width: 20rem;
         }
 
         .draggable {
-            position: absolute;
-            padding: 0.5rem;
+            animation: pulse 3s infinite;
             background-color: red;
             border-radius: 50%;
             cursor: grab;
+            padding: 0.5rem;
+            position: absolute;
             z-index: 1;
         }
 
         .isDragged {
+            animation: unset;
             opacity: 0.25;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 4px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
         }
     `
 
