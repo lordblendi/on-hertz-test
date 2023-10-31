@@ -76,7 +76,6 @@ export class SurroundPannerCircle extends LitElement {
         .draggable {
             animation: pulse 5s infinite;
             background-color: #07fff9;
-            border: white 1px solid;
             border-radius: 50%;
             cursor: grab;
             padding: 0.5rem;
