@@ -41,7 +41,6 @@ export class DecibelIndicators extends LitElement {
 
                 this.data = newData
                 this.renderChart()
-                console.log("Success:", data)
             })
             .catch((error) => {
                 console.error("Error:", error)
@@ -127,12 +126,10 @@ export class DecibelIndicators extends LitElement {
     }
 
     protected firstUpdated(): void {
-        console.log("firstUpdated")
         this.fetchData()
     }
 
     updated(changedProperties: Map<string, unknown>): void {
-        console.log("updated")
         if (
             changedProperties.has("coordinateX") ||
             changedProperties.has("coordinateY")
