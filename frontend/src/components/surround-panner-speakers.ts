@@ -20,6 +20,7 @@ export class SurroundPannerSpeakers extends LitElement {
 
         .speaker {
             position: absolute;
+            color: #06b6d4;
         }
 
         .left {

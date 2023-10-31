@@ -14,7 +14,7 @@ export class MainApp extends LitElement {
 
     static styles = css`
         div {
-            background-color: lightgray;
+            background-color: #1e293b;
             display: flex;
             padding: 2rem;
             align-items: center;

@@ -16,9 +16,55 @@ export class SurroundPannerCircle extends LitElement {
     @query(".draggable")
     draggableElement!: HTMLDivElement
 
+    // #010a39 => dark blue
+    // #cffafe => cyan
     static styles = css`
         .circle {
-            background-color: darkgray;
+            background-color: #010a39;
+            background:
+                /* lighting */
+                radial-gradient(
+                    100% 100%,
+                    rgba(0, 0, 0, 0),
+                    #000 10em,
+                    rgba(0, 0, 0, 0) 10em
+                ),
+                /* lines */
+                    linear-gradient(
+                        #cffafe00 10em,
+                        #cffafe 10em,
+                        #cffafe 10.1em,
+                        #cffafe00 9.9em
+                    ),
+                linear-gradient(
+                    45deg,
+                    #cffafe00 14.14em,
+                    #cffafe 13.98em,
+                    #cffafe 14.2em,
+                    #cffafe00 14.04em
+                ),
+                linear-gradient(
+                    90deg,
+                    #cffafe00 10em,
+                    #cffafe 10em,
+                    #cffafe 10.1em,
+                    #cffafe00 9.9em
+                ),
+                linear-gradient(
+                    -45deg,
+                    #cffafe00 14.04em,
+                    #cffafe 14.1em,
+                    #cffafe 14.14em,
+                    #cffafe00 14.14em
+                ),
+                /* circles */
+                    repeating-radial-gradient(
+                        #010a39,
+                        #010a39 3.16em,
+                        #cffafe 3.2em,
+                        #cffafe 3.26em,
+                        #010a39 3.3em
+                    );
             border-radius: 50%;
             height: 20rem;
             left: 10%;
@@ -28,8 +74,9 @@ export class SurroundPannerCircle extends LitElement {
         }
 
         .draggable {
-            animation: pulse 3s infinite;
-            background-color: red;
+            animation: pulse 5s infinite;
+            background-color: #07fff9;
+            border: white 1px solid;
             border-radius: 50%;
             cursor: grab;
             padding: 0.5rem;
@@ -44,15 +91,15 @@ export class SurroundPannerCircle extends LitElement {
 
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255 0.1);
             }
 
-            70% {
-                box-shadow: 0 0 0 4px rgba(0, 0, 0, 0);
+            50% {
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
             }
 
             100% {
-                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
             }
         }
     `

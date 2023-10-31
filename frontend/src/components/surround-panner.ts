@@ -8,9 +8,10 @@ import "./surround-panner-speakers"
 export class SurroundPanner extends LitElement {
     static styles = css`
         .container {
-            position: relative;
-            background-color: gray;
+            border-radius: 1em;
+            border: #cffafe 1px solid;
             height: 400px;
+            position: relative;
             width: 400px;
         }
     `
