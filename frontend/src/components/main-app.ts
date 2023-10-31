@@ -19,6 +19,8 @@ export class MainApp extends LitElement {
             padding: 2rem;
             align-items: center;
             justify-content: space-between;
+            min-width: 1000px;
+            width: 50%;
         }
     `
 
