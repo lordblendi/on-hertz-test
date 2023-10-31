@@ -5,3 +5,8 @@ interface Decibels {
     surroundLeft: number
     surroundRight: number
 }
+
+interface DecibelGraphElement {
+    label: string
+    value: number
+}

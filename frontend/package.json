@@ -13,10 +13,12 @@
   },
   "devDependencies": {
     "@lit/task": "^1.0.0",
+    "@types/chart.js": "^2.9.39",
     "@types/copy-webpack-plugin": "^10.1.0",
     "@types/node": "^20.8.6",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
+    "chart.js": "^4.4.0",
     "copy-webpack-plugin": "^11.0.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
